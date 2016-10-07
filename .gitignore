@@ -137,3 +137,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.idea/misc.xml
+*.xml
+Week1/.idea/Week1.iml
+.idea/CISF003A-Object-Oriented-Methodologies-In-Python.iml
