@@ -116,6 +116,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+# Linux Os
+# ==========================
+.idea/
+
+
 # Windows
 # =========================
 
