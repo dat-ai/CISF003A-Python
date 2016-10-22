@@ -3,7 +3,7 @@
 Student name : DAT NGUYEN
 Course       : CS F003A - OO Methodologies in Python
 Term         : Fall 2016 - Foothill College
-Last Update  : 3:02 PM 10/5/2016
+Last Update  : 3:02 PM 10/18/2016
 
 """
 import math
@@ -45,7 +45,11 @@ def is_perfect_squared(n):
 
 
 def special_sum(a_list):
-    return sum([i**2 for i in a_list] + [i for i in a_list if is_odd(i) or is_perfect_squared(i)])
+    double_all_numbers = [i**2 for i in a_list]
+    odd_or_perfect_numbers = [i for i in a_list if is_odd(i) or is_perfect_squared(i)]
+    total = double_all_numbers + odd_or_perfect_numbers
+    return sum(total)
+
 
 print("\nThe sum of perfect squared numbers/odd numbers/all double number in a list [1,1000] is : "
       , special_sum(range(1, 1001)))
@@ -53,7 +57,7 @@ print("\nThe sum of perfect squared numbers/odd numbers/all double number in a l
 
 # OUTPUT CONSOLE
 # ---------------------------
-# Cost of Driving Calculator
+# Cost of Driving Calculators
 # ---------------------------
 #
 # Please enter your car's MPG (mile per gallon):  21

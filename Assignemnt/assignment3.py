@@ -45,65 +45,6 @@
 
 import re
 
-"""
-
-
-Use the following rules to calculate the premium:
-The base premium is 5 percent of the value of the car. u
-Drivers under 25 years old pay 15 percent more
-Drivers from 25 through 29 pay 10 percent more.
-
-A driver with
-One traffic ticket pays 10 percent over the premium already figured.
-Two tickets draws a     25 percent extra charge;
-three tickets adds      50 percent;
-Drivers with more than three tickets are refused coverage.
-
-This is what the Python Run pane will look like when you run your program four times. Please use these test values when
- you create the recording of the run that you will turn in:
-
-       Driver’s Age? 35
-       Number of Tickets? 1
-       Value of Car? 10000
-       Premium: $550.00
-
-       Driver’s Age? 29
-       Number of Tickets? 2
-       Value of Car? 15000
-       Premium: $1031.25
-
-       Driver’s Age? 19
-       Number of Tickets? 3
-       Value of Car? 850
-       Premium: $73.31
-
-       Driver’s Age? 81
-       Number of Tickets?
-       Value of Car? 12500
-       Premium: $0
-
-Notice the resulting premiums that your program must calculate and output given these specific inputs. But also note
-that your program is required to work in other cases too, so it is your responsibility to test other input values to
-ensure that your program works in all reasonable cases. You can assume that the user will only type in numbers.
-
-In Order to Receive Full Credit:
-•  To calculate the premium, first apply the base rate of 5% * value of the car to get the base premium, and then add a
- percentage of that premium for the age of the driver. Finally add a percentage of that premium for the number of
- tickets (if necessary). For example, for the driver age 19:
-
-      Premium = (850 * .05)* 1.15 * 1.50 = 73.3125
-                    ^                ^        ^
-                    car value        age    tickets
-
-•  Structure the conditions so that you have NO code duplication.
-
-•  Try out other test cases to make sure that your program works for other common data as well.
-You can assume that the user's input will all be positive numbers.
-
-•  Don't forget to submit a recording of the run of your program as you did in the previous assignments.
-
-"""
-
 
 class DrivingRecord:
     driver_age = 0
@@ -120,6 +61,11 @@ class DrivingRecord:
         return self.number_of_tickets
 
 
+def string_validation(string, regex_pattern):
+    pattern = re.compile(regex_pattern)
+    return bool(pattern.search(string))
+
+
 def get_quote(record, car_value):
 
     # Validation
@@ -131,6 +77,7 @@ def get_quote(record, car_value):
 
     premium = 0
     age_multiplier = 0
+    ticket_multiplier = 0
     driver_age = int(record.get_driver_age())
     driver_tickets = int(record.get_num_tickets())
 
@@ -138,35 +85,23 @@ def get_quote(record, car_value):
         return -2
     elif 16 < driver_age < 25:
         age_multiplier = 1.15
-    elif 25 <= driver_age < 29:
+    elif 25 <= driver_age <= 29:
         age_multiplier = 1.10
     else:
         age_multiplier = 1.0
 
-    premium = (int(car_value)*0.05)*age_multiplier
-
     if driver_tickets == 1:
-        premium += premium*0.10
+        ticket_multiplier = 1.10
     elif driver_tickets == 2:
-        premium += premium*0.10
-        premium += premium*0.25
+        ticket_multiplier = 1.25
     elif driver_tickets == 3:
-        premium += premium * 0.10
-        premium += premium * 0.50
+        ticket_multiplier = 1.50
     elif driver_tickets >= 4:
         return -1
 
-    # These two variables might be implemented in real world situation, not in this scope of this exercise
-    discount_multiplier = 1.0
-    cash_discount = 0.0
     # Calculate premium
-    premium = premium*discount_multiplier - cash_discount
+    premium = (int(car_value)*0.05)*age_multiplier*ticket_multiplier
     return premium
-
-
-def string_validation(string, regex_pattern):
-    pattern = re.compile(regex_pattern)
-    return bool(pattern.search(string))
 
 print("---------------------------")
 print("Car Insurance Premium Quote")
@@ -210,8 +145,7 @@ def match_pattern(ls, pattern):
     if len(l) == 0:
         return False
     else:
-      # Unit test:
-      # print(l)
+        # print(l)
         return True
 
 num_lines = sum([1 for l in lines if match_pattern(l, pattern1)])
