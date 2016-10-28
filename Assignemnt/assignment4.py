@@ -72,3 +72,31 @@ The average of your numbers is: 22.5
 Hint: some operations just need to be reversed and now use the largest integer possible is given by: sys.maxsize
 """
 
+if __name__ == "__main__":
+    num_input_ls = []
+    total = 0.0
+    ls_input = []
+    # condition to stop the below loop
+    run = True
+    while run:
+        try:
+            num = float(input("Please enter a number: "))
+        except ValueError:
+            print("**Error**\n   Please only enter numeric value\n")
+            continue
+        # Calculate Total
+        total =+ num
+        # Save the list of inputs for further calculation
+        ls_input.append(num)
+
+        cond = input("Do you have another number to enter? (Y/N): ")
+        if cond == "N" or cond == "n":
+            run = False
+
+
+    print('\n{:25} : {:5.2f}'.format("The total of your input numbers is", total))
+    print('\n{:25} : {:5.2f}'.format("The smallest of your numbers is", total))
+    print('\n{:25} : {:5.2f}'.format("The largest of your numbers is", total))
+    print('\n{:25} : {:5.2f}'.format("The number of even numbers is", [ i for i in ls_input if i%2==0]))
+    print('\n{:25} : {:5.2f}'.format("The number of odd numbers is", [ i for i in ls_input if i%2!=0]))
+
