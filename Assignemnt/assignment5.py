@@ -61,6 +61,7 @@ MIN_RANGE = -999999999
 
 # Reference: How to Spell Number in English
 # http://www.grammarbook.com/numbers/numbers.asp
+
 # Initialize base
 dict_base = {0:"",1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
              6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
@@ -70,6 +71,7 @@ dict_base = {0:"",1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
 dict_100th = {20: "twenty", 30: "thirty", 40: "forty", 50: "fifty", 60: "sixty",
               70: "seventy", 80: "eighty", 90: "ninety"}
 
+lst_base = ["", " thousand "," million "]
 
 def spell(whole_num: int):
     """
@@ -82,26 +84,49 @@ def spell(whole_num: int):
                             "one hundred thousand three hundred sixty five"
              spell(-623,456,789)
                             "negative six hundred twenty three millions four hundred fifty six seven eighty nine
-
     """
-    remaining = abs(whole_num)
     str_result = ""
-    if whole_num < 0:
-        str_result = "Negative"
+    remaining = abs(whole_num)
+
     prev_remainder = 0
-    base_seed = 100                             # seeder to separate number
+    base_seed = 1000                            # seeder to separate number
+    current_base = 0                            # check if this is hundred, thounsand or million, billion...
+
     while remaining > 0:
-        print("\n\nPrevious remainder: " + str(prev_remainder))
-        curr_remainder = remaining % base_seed
-        remaining -= curr_remainder
-        if base_seed == 100:
-            str_result += base(curr_remainder)
+        # Calculate number to get remainder     # Example : 326 656
+        curr_remainder = remaining % base_seed  #           326 656 % 1000 ( Remainder : 656)
+        remaining -= curr_remainder             # Remaining:326 656 - 656 = 326 0000
+        remaining /= base_seed                  # Remaining: 326
 
-        print("Current remainder:" + str(curr_remainder) + " " + str_result)
-        base_seed *= 10
-        prev_remainder += curr_remainder
 
-    return "sample " + str(whole_num)
+        # Get the hundred part
+        hundred = int(curr_remainder / 100)
+        remain  = curr_remainder - hundred*100
+
+        # createa temp variable
+        spell = ""
+        if hundred != 0:
+            spell =  dict_base[hundred] + " hundred "
+        # Get the base part
+        if remain != 0:
+             spell += base(remain)
+
+        spell += lst_base[current_base]
+
+        # Update final string
+        str_result = spell + str_result
+
+        #Update for next loop
+        current_base += 1                   # move from hundred --> thousand --> million
+    # Add negative if input is -
+
+    if whole_num < 0:
+        str_result = "Negative " + str_result
+    else:
+        str_result[0].upper()
+
+    # Capitalize the first numer
+    return str_result
 
 
 def base(remainder):
