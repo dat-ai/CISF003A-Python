@@ -49,4 +49,93 @@ number of lines, spaces, characters words etc.
 
 https://foothillcollege.instructure.com/courses/1916/assignments/26962
 """
+import re as regex
 
+
+def read_file_from_user():
+    """
+    Ask user to enter a file and process the file:
+    :return: a list contain 3 integers :
+            1st int: number of characters in the file
+            2nd int: number of words
+            3rd int: number of lines
+    """
+    user_input = get_file_name()
+    f = open_file(user_input)
+
+
+def get_word_count(a_file):
+    """
+     Get total number of words in a file
+    :param a_file: file object
+    :return: integer: number of words
+    """
+
+
+def get_char_count(a_file):
+    """
+
+    :param a_file:
+    :return:
+    """
+
+
+def get_line_count(a_file):
+    """
+
+    :param a_file:
+    :return:
+    """
+
+    
+def get_file_name():
+    """
+    Read filename from user
+    :return: a string : filename
+    """
+
+    # Practice regular expression and try/catch in Python
+    correct_path_pattern = regex.compile("^(/)?([^/\0]+(/)?)+$")
+    correct_file_pattern = regex.compile(".+\..+")
+    while True:
+        try:
+            filename = input("Please enter a filename (e.g.: /path/to/filename) : ")
+
+            if not correct_file_pattern.match(filename):
+                raise CustomException("Invalid file name")
+
+            elif not correct_path_pattern.match(filename):
+                raise CustomException("Invalid file path")
+
+        except CustomException as e:
+            print(e, "Please try again")
+        except Exception as e:
+            print(e, "Please try again")
+        else:
+            return filename
+
+
+def open_file(file_name):
+    """
+    Open file using provided filename
+    :param file_name: a string contains path to file
+    :return: file object
+    """
+    while True:
+        try:
+            file = open(file_name)
+        except FileNotFoundError:
+            print("File", file_name, "is not found.")
+            file_name = get_file_name()
+        except Exception as e:
+            print(e)
+            file_name = get_file_name()
+        else:
+            return file
+
+
+class CustomException(Exception):
+    pass
+
+if __name__ == "__main__":
+    read_file_from_user()
