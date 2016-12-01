@@ -1,0 +1,2 @@
+Here is a sample run, with user input in yellow:
+This program will calculate statistics for your integer data.

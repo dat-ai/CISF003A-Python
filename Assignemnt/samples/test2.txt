@@ -1,0 +1,5 @@
+Write a function that takes:
+ - a whole number as parameter
+ - returns a string containing the number spelled out in English.
+For example, the function call:  spell (123123)
+will return the string:          "one hundred twenty three thousand one hundred twenty three"
