@@ -14,9 +14,12 @@ getSuit(self)
 Returns the suit of the card as a word, eg "Hearts"
 
 bjValue(self)
-Returns the Blackjack value of a card. Ace has a blackjack value of 1, face cards all have blackjack value 10. The rest
-of the cards have blackjack values that are the same as their rank. The returned value from this method will always be
-a number.
+Returns the Blackjack value of a card.
+Ace has a blackjack value of 1,
+Face cards all have blackjack value 10.
+The rest of the cards have blackjack values that are the same as their rank.
+
+The returned value from this method will always be a number.
 
 __str__(self)
 Returns a string containing the full name of the card. For example. "Ace of Spades".
@@ -54,35 +57,52 @@ Rubric
 class PlayingCard:
     def __init__(self, rank, suit):
         """
-
-        :param rank:
-        :param suit:
+        Initialize a card
+        :param rank: an integer - ranging from 1-13
+        :param suit: a char     - 'd' for Diamond, 'c' for Club, 'h' for Heart, 's' for Spade
         """
+        # Dictionary contains spelling rank of a card
         self.ranks = {1: "Ace", 2: "Two", 3: "Three", 4: "Four", 5: "Five",
                       6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten",
                       11: "Jack", 12: "Queen", 13: "King"}
 
-        self.suits = {'d': "Diamonds", 'c': "Clubs", 'h': "Heart", 's': "Spades"}
+        # Dictionary contains spelling suit of a card
+        self.suits = {'d': "Diamonds", 'c': "Club", 'h': "Heart", 's': "Spades"}
 
         self.rank_value = self.ranks[rank]
         self.suit_value = self.suits[suit]
 
     def getRank(self):
         """
-
-        :return:
+        Return the rank value of the card
+        :return: an integer - rank value
         """
+        return self.rank_value
+
     def getSuit(self):
         """
-
-        :return:
+        Return the suit value of the card
+        :return: a string - suit value
         """
+        return self.suit_value
 
     def bjValue(self):
         """
+        Return the blackjack value of the card
 
-        :return:
+        Ace has a blackjack value of 1,
+        Face cards all have blackjack value 10.
+        The rest of the cards have blackjack values that are the same as their rank.
+        :return: a number
+
         """
+        if self.rank_value == 1:
+            return 1
+        if 11 <= self.rank_value <= 13:
+            return 10
+        else:
+            return self.rank_value
+
     def __str__(self):
         """
 
