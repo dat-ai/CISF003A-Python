@@ -1,0 +1,38 @@
+.. TicTacToe Game - CIS F003A Fall 2016 documentation master file, created by
+   sphinx-quickstart on Fri Dec  9 21:25:30 2016.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+TicTacToe Game - CIS F003A Fall 2016's Documentation
+====================================================
+
+   .. toctree::
+      :maxdepth: 3
+
+
+TicTacToe Library Methods
+-------------------------
+
+   .. automodule:: lib
+      :members:
+      :undoc-members:
+      :show-inheritance:
+      :private-members:
+
+TicTacToe Main Function
+-----------------------
+
+   .. automodule:: tictactoe
+      :members:
+      :undoc-members:
+      :show-inheritance:
+      :private-members:
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

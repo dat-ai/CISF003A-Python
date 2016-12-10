@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TicTacToe Game - CIS F003A Fall 2016’s Documentation &mdash; TicTacToe Game - CIS F003A 2016 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TicTacToe Game - CIS F003A 2016 1.0 documentation" href="#"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> TicTacToe Game - CIS F003A 2016
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <!-- Local TOC -->
+                <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TicTacToe Game - CIS F003A Fall 2016&#8217;s Documentation</a><ul>
+<li><a class="reference internal" href="#tictactoe-library-methods">TicTacToe Library Methods</a></li>
+<li><a class="reference internal" href="#tictactoe-main-function">TicTacToe Main Function</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">TicTacToe Game - CIS F003A 2016</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>TicTacToe Game - CIS F003A Fall 2016&#8217;s Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tictactoe-game-cis-f003a-fall-2016-s-documentation">
+<h1>TicTacToe Game - CIS F003A Fall 2016&#8217;s Documentation<a class="headerlink" href="#tictactoe-game-cis-f003a-fall-2016-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tictactoe-library-methods">
+<h2>TicTacToe Library Methods<a class="headerlink" href="#tictactoe-library-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-lib"></span><dl class="class">
+<dt id="lib.Board">
+<em class="property">class </em><code class="descclassname">lib.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>grid_size=3</em>, <em>box_size=200</em>, <em>border=20</em>, <em>line_width=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>TicTacToe Board</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>grid_size</strong> &#8211; number of grids in the Board (Default = 3)</li>
+<li><strong>box_size</strong> &#8211; number of boxes in the Board (Default = 200)</li>
+<li><strong>border</strong> &#8211; the border of the board to determine where to start drawing</li>
+<li><strong>line_width</strong> &#8211; the width of lines that separate each box</li>
+<li><strong>surface_size</strong> &#8211; size of the window</li>
+<li><strong>surface</strong> &#8211; Game window</li>
+<li><strong>game_over</strong> &#8211; state if game is over</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="lib.Board.add_button">
+<code class="descname">add_button</code><span class="sig-paren">(</span><em>size</em>, <em>color</em>, <em>text</em>, <em>text_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.add_button"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.add_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a button to the screen</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> &#8211; array_like shape of the button.</li>
+<li><strong>color</strong> &#8211; color for the button</li>
+<li><strong>text</strong> &#8211; message of the text</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a button the screen</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.add_text_to_screen">
+<code class="descname">add_text_to_screen</code><span class="sig-paren">(</span><em>message</em>, <em>color</em>, <em>size='small'</em>, <em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.add_text_to_screen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.add_text_to_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a message at the middle of the screen
+:param message: the message to the screen
+:param color:   color of the text
+:param size:    size of the size
+:param offset: offset to the middle vertical position [default = 0]
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.calculate_winners">
+<code class="descname">calculate_winners</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.calculate_winners"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.calculate_winners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counting all selected boxes by a player is enough to be a winner</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.check_for_winner">
+<code class="descname">check_for_winner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.check_for_winner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.check_for_winner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the winner is found</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.check_game_over">
+<code class="descname">check_game_over</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.check_game_over"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.check_game_over" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the game is over</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.display_game_over">
+<code class="descname">display_game_over</code><span class="sig-paren">(</span><em>winner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.display_game_over"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.display_game_over" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the game result : winner is found or a draw game</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>winner</strong> &#8211; the winner</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.display_start_screen">
+<code class="descname">display_start_screen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.display_start_screen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.display_start_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display an Instruction screen before players starting the game
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.draw_lines">
+<code class="descname">draw_lines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.draw_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.draw_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw lines on the Board.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">display grid-lines on the board</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.get_box_at_pixel">
+<code class="descname">get_box_at_pixel</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.get_box_at_pixel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.get_box_at_pixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get which box play has clicked</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> &#8211; x-axis value on the window</li>
+<li><strong>y</strong> &#8211; y-axis value on the window</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">box where player clicks
+None if box is not found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.initialize_boxes">
+<code class="descname">initialize_boxes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.initialize_boxes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.initialize_boxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create boxes for the TicTacToe Board
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.is_hover">
+<code class="descname">is_hover</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.is_hover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.is_hover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if mouse hover a button
+:param pos: position of a button
+:return: true or false</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.play_turn">
+<code class="descname">play_turn</code><span class="sig-paren">(</span><em>box</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.play_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.play_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine which turn:
+X = 1
+O = 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>box</strong> &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.process_click">
+<code class="descname">process_click</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.process_click"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.process_click" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Process where player clicks and feedback appropriate actions</dt>
+<dd>. If player clicks in BOX area:</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> &#8211; </li>
+<li><strong>y</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a window on the screen.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">nothing</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Board.text_objects">
+<code class="descname">text_objects</code><span class="sig-paren">(</span><em>text</em>, <em>color</em>, <em>size='small'</em>, <em>rect_color=(255</em>, <em>255</em>, <em>255)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.text_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.text_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dynamic text object
+:param text: message
+:param color: RGB color
+:param size: size &#8220;small&#8221;, &#8220;medium&#8221;, &#8220;large&#8221; [default = small]
+:param rect_color: color of the rectangle boundary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">text, text_surface</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.Board.turn">
+<code class="descname">turn</code><em class="property"> = 1</em><a class="headerlink" href="#lib.Board.turn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="lib.Box">
+<em class="property">class </em><code class="descclassname">lib.</code><code class="descname">Box</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>size</em>, <em>board</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Box"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Box where the x&#8217;s and o&#8217;s are drawn</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>state</strong> &#8211; global variables [default = 0, if box is marked then state = 1]</li>
+<li><strong>size</strong> &#8211; size of the box</li>
+<li><strong>line_width</strong> &#8211; width of the X mark</li>
+<li><strong>rect</strong> &#8211; pygame rectangle is drawn on this box</li>
+<li><strong>board</strong> &#8211; the board this box uses to drawn</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Initialize a box</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; x-axis value</li>
+<li><strong>y</strong> &#8211; y-axis value</li>
+<li><strong>size</strong> &#8211; size of this box</li>
+<li><strong>board</strong> &#8211; the board it will use to draw</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="lib.Box.mark_o">
+<code class="descname">mark_o</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Box.mark_o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Box.mark_o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark O on the screen when player clicks on the screen
+:return: draw an O mark on the box that player clicks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.Box.mark_x">
+<code class="descname">mark_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Box.mark_x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Box.mark_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark X on the screen when player clicks on the screen
+:return: draw X mark on the box that player clicks</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.Box.state">
+<code class="descname">state</code><em class="property"> = 0</em><a class="headerlink" href="#lib.Box.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="tictactoe-main-function">
+<h2>TicTacToe Main Function<a class="headerlink" href="#tictactoe-main-function" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Olu Oluwasanmi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

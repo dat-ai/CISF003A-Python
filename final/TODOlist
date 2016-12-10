@@ -1,0 +1,45 @@
+Final Exam
+
+https://foothillcollege.instructure.com/courses/1916/assignments/26965#submit
+Rationale:
+
+Usually in real-world software development projects, we do not start from scratch. We have already existing code that
+we have to modify, extend, understand, document and test, because the requirements have changed or use cases have changed.
+
+The goal of the final is to make you go through a mini-version of this so you get the experience. You will use:
+
+1. git( a code versioning system) to keep track of your code revisions and changes you make to the code.
+2. The python unittest framework for your test cases to make sure your code is up to specifications
+3. Sphinx and the automatic documentation features using python docstrings (documentations strings) like we have used throughout the beginning of the class.
+
+
+Sometimes the requirements are a little ambiguous, this is normal, no software specification is exact from the get go,
+it undergoes iterative refinement, till it converges to the customer needs.
+So this specification/requirements are subject to change as well, to help clarify or to add features to the program.
+
+The project is a tic tac toe game, written using pygame.
+Currently, as  it stands it works but is barely object oriented, also customers are
+requesting a few more features to the tic-tac toe game to make sure our users are satisfied.
+
+
+Redesign the game using object-oriented principles and patterns to be more extensible:
+TopTotal Python Patterns (Links to an external site.),
+Design Patterns in Python (Links to an external site.)
+
+Sounds: Sounds should be made by the game after each play by each player and also when the game is completed.
+        The game should also play a different sound to signify the end of the game.
+
+Gameplay: Have the screen indicate, whose turn it is to play.  At the end of the game,
+          give the option to play another game or end the game.
+
+Change the game User Interface(UI) to be a little more colourful. As currently the game is in black and white.
+
+Properly document the program and its functionality using Sphinx:
+Sphinx Official documentation (Links to an external site.),
+help with sphinx documentation (Links to an external site.),
+another site to help you with documenting your code (Links to an external site.).
+
+Every method, class should be documented with what the function/class does as well.
+
+Appropriate unit test cases should be written for the application using the python unittest module.
+The code should be tested thoroughly. Every function should be tested.
