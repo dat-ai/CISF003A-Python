@@ -3,36 +3,73 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-TicTacToe Game - CIS F003A Fall 2016's Documentation
-====================================================
-
-   .. toctree::
-      :maxdepth: 3
+=============================================
+TicTacToe Documentation - CIS F003A Fall 2016
+=============================================
 
 
-TicTacToe Library Methods
--------------------------
+.. toctree::
+   :maxdepth: 4
 
-   .. automodule:: lib
-      :members:
-      :undoc-members:
-      :show-inheritance:
-      :private-members:
+System Requirements
+-------------------
+   * PyGame
+   * Python 3.5.2 (Anaconda)
 
-TicTacToe Main Function
------------------------
+Screenshots
+-----------
+      .. |image1| image:: _static/welcome.png
+            :align: middle
+      .. |image2| image:: _static/mainscreen.png
+            :align: top
+      .. |image3| image:: _static/finish.png
+            :align: top
 
-   .. automodule:: tictactoe
-      :members:
-      :undoc-members:
-      :show-inheritance:
-      :private-members:
++---------+---------+---------+
+| |image1|| |image2|| |image3||
++---------+---------+---------+
+
+Updates
+-------
+    * Added Welcome screen
+
+    * Updated UI for the game
+
+    * Added Game-over Screen and Statistics
+
+    * Added add_button, add_sound, add_text_to_screen methods
+
+=================
+TicTacToe Library
+=================
+    .. automodule::lib
+    .. autosummary::
+
+Board Class
+-----------
+       .. py:currentmodule:: lib
+
+    .. autoclass:: Board
+       :members:
+       :undoc-members:
+       :show-inheritance:
+
+Box Class
+---------
+       .. py:currentmodule:: lib
+
+    .. autoclass:: Box
+       :members:
+       :undoc-members:
+       :show-inheritance:
 
 
+==================
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
 

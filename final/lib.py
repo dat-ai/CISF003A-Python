@@ -7,11 +7,11 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
-
 BLACK = (84, 84, 84)                # X mark
 DARK_GRAY = (20, 189, 172)          # Background
 LIGHT_YELLOW = (242, 235, 211)      # O Mark
 LIGHT_GREEN = (13, 161, 146)        # GridLine
+
 
 class Box(object):
     """
@@ -22,45 +22,49 @@ class Box(object):
     :param line_width: width of the X mark
     :param rect: pygame rectangle is drawn on this box
     :param board: the board this box uses to drawn
-
     """
     state = 0
 
     def __init__(self, x, y, size, board):
-        """Initialize a box
+        """
+        Initialize a box
 
         :param x: x-axis value
         :param y: y-axis value
         :param size: size of this box
         :param board: the board it will use to draw
-
         """
         self.size = size
-        self.line_width = int(self.size / 8) if self.size > 40 else 1
+        self.line_width = int(self.size / 6) if self.size > 40 else 1
         self.radius = (self.size / 2) - (self.size / 8)
         self.rect = pygame.Rect(x, y, size, size)
         self.board = board
     
     def mark_x(self):
-        """ Mark X on the screen when player clicks on the screen
+        """
+        Mark X on the screen when player clicks on the screen
+
         :return: draw X mark on the box that player clicks
         """
-
-        pygame.draw.line(self.board.surface, BLACK, (self.rect.centerx - self.radius, self.rect.centery - self.radius),
-                         (self.rect.centerx + self.radius, self.rect.centery + self.radius), self.line_width)
-        pygame.draw.line(self.board.surface, BLACK, (self.rect.centerx - self.radius, self.rect.centery + self.radius),
-                         (self.rect.centerx + self.radius, self.rect.centery - self.radius), self.line_width)
+        s = self.line_width
+        r = self.radius
+        pygame.draw.line(self.board.surface, BLACK, (self.rect.centerx - r, self.rect.centery - r), (self.rect.centerx + r, self.rect.centery + r), s)
+        pygame.draw.line(self.board.surface, BLACK, (self.rect.centerx - r, self.rect.centery + r), (self.rect.centerx + r, self.rect.centery - r), s)
     
     def mark_o(self):
-        """Mark O on the screen when player clicks on the screen
+        """
+        Mark O on the screen when player clicks on the screen
+
         :return: draw an O mark on the box that player clicks
         """
-        pygame.draw.circle(self.board.surface, LIGHT_YELLOW, (int(self.rect.centerx), int(self.rect.centery)),
-                           int(self.radius), int(self.line_width))
+        s = self.line_width
+        r = self.radius
+        pygame.draw.circle(self.board.surface, LIGHT_YELLOW, (int(self.rect.centerx), int(self.rect.centery)), int(r), int(s))
 
 
 class Board(object):
-    """TicTacToe Board
+    """
+    TicTacToe Board
 
     :param grid_size: number of grids in the Board (Default = 3)
     :param box_size:  number of boxes in the Board (Default = 200)
@@ -69,11 +73,11 @@ class Board(object):
     :param surface_size: size of the window
     :param surface:   Game window
     :param game_over: state if game is over
+    :param result:    save result of player 1 and player [default = 0,0]. update after every game
     """
     turn = 1
     
     def __init__(self, grid_size=3, box_size=200, border=20, line_width=5):
-
         self.grid_size = grid_size
         self.box_size = box_size
         self.border = border
@@ -81,24 +85,23 @@ class Board(object):
         self.surface_size = (self.grid_size * self.box_size) + (self.border * 2) + (self.line_width * (self.grid_size - 1))
         self.surface = pygame.display.set_mode((self.surface_size, self.surface_size), 0, 32)
         self.game_over = False
+        self.result = [0, 0]
+        pygame.display.set_caption('Tic Tac Toe - Final Project')
+        self.display_start_screen()
         self.setup()
         
     def setup(self):
-        """Create a window on the screen.
+        """
+        Create a window on the screen.
 
         :return: nothing
         """
-
-        print(self.surface_size)
-        pygame.display.set_caption('Tic Tac Toe - Final Project')
-        self.display_start_screen()
         self.surface.fill(DARK_GRAY)
         self.draw_lines()
         self.initialize_boxes()
+        self.add_text_to_screen("Turn: Player %s" % self.turn, BLACK, "small", int(self.surface_size/2.2), DARK_GRAY)
         self.calculate_winners()
 
-        # UPDATE LOOp
-    
     def draw_lines(self):
         """
         Draw lines on the Board.
@@ -114,14 +117,14 @@ class Board(object):
     def initialize_boxes(self):
         """
         Create boxes for the TicTacToe Board
-        :return:
+
+        :return: set up all the boxes on the screen window
         """
         self.boxes = []
         top_left_numbers = []
         for i in range(0, self.grid_size):
-            num = ((i * self.box_size) + self.border + (i *self.line_width))
+            num = ((i * self.box_size) + self.border + (i * self.line_width))
             top_left_numbers.append(num)
-        
         box_coordinates = list(itertools.product(top_left_numbers, repeat=2))
         for x, y in box_coordinates:
             self.boxes.append(Box(x, y, self.box_size, self))
@@ -132,8 +135,8 @@ class Board(object):
 
         :param x: x-axis value on the window
         :param y: y-axis value on the window
-        :return: box where player clicks
-                 None if box is not found
+
+        :return: box where player clicks. None if box is not found
         """
         for index, box in enumerate(self.boxes):
             if box.rect.collidepoint(x, y):
@@ -141,27 +144,29 @@ class Board(object):
         return None
     
     def process_click(self, x, y):
-        """ Process where player clicks and feedback appropriate actions
-                . If player clicks in BOX area:
+        """
+        Process where player clicks and feedback appropriate actions if player clicks in BOX area:
 
-        :param x:
-        :param y:
+        :param x: x-axis value
+        :param y: y-axis value
         :return:
         """
         box = self.get_box_at_pixel(x, y)
         if box is not None and not self.game_over:
             self.play_turn(box)
+            self.add_text_to_screen("Turn: Player %s" % self.turn, BLACK, "small", int(self.surface_size / 2.2), DARK_GRAY)
             self.check_game_over()
 
     def play_turn(self, box):
         """
-        Determine which turn:
+        Determine turn of players and draw line/circle
         X = 1
         O = 2
 
-        :param box:
+        :param box: a box user has selected
         :return:
         """
+
         if box.state != 0:
             return
         if self.turn == 1:
@@ -172,16 +177,16 @@ class Board(object):
             box.mark_o()
             box.state = 2
             self.turn = 1
+
         return
     
     def calculate_winners(self):
         """
-        Counting all selected boxes by a player is enough to be a winner
+        Count all selected boxes by a player is enough to be a winner
 
-        :return:
+        :return: nothing
         """
         self.winning_combinations = []
-
         indices = [x for x in range(0, self.grid_size * self.grid_size)]
         
         # Vertical combinations
@@ -198,7 +203,7 @@ class Board(object):
         """
         Determine if the winner is found
 
-        :return:
+        :return: winner
         """
         winner = 0
         for combination in self.winning_combinations:
@@ -207,15 +212,17 @@ class Board(object):
                 states.append(self.boxes[index].state)
             if all(x == 1 for x in states):
                 winner = 1
+                self.result[0] += 1
             if all(x == 2 for x in states):
                 winner = 2
+                self.result[1] += 1
         return winner
     
     def check_game_over(self):
         """
-        Determine if the game is over
+        Determine if the game is over.
 
-        :return:
+        :return: update self.game_over
         """
         winner = self.check_for_winner()
         if winner:
@@ -228,75 +235,94 @@ class Board(object):
     def display_start_screen(self):
         """
         Display an Instruction screen before players starting the game
+
         :return:
         """
         intro = True
         x = self.surface_size
-        button_pos = (x/2 - 90, x - x*0.4, 150, 100)
+        button_pos = (x/2 - x*0.16, x - x*0.2, 150, 100)
         while intro:
             for event in pygame.event.get():
                 # print(event)
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-
             # Create a blank white screen
-            self.surface.fill(WHITE)
-            self.add_text_to_screen("Welcome to TicTacToe Game", DARK_GRAY, "medium", -self.surface_size*0.05)
-            self.add_text_to_screen("CIS F003A - Fall 2016", DARK_GRAY, "small",self.surface_size*0.05)
-            self.add_button(button_pos, BLACK, "Okay", WHITE)
-
-            cur = pygame.mouse.get_pos()
+            self.surface.fill(LIGHT_GREEN)
+            self.add_text_to_screen("Welcome to TicTacToe Game", WHITE, "large", -self.surface_size*0.05, LIGHT_GREEN )
+            self.add_text_to_screen("CIS F003A - Fall 2016", WHITE, "small", self.surface_size*0.05, LIGHT_GREEN)
+            self.add_button(button_pos, DARK_GRAY, "Click me to continue", WHITE)
             if self.is_hover(button_pos):
                 click = pygame.mouse.get_pressed()
                 if click[0] == 1:
                     break
-                self.add_button(button_pos, DARK_GRAY, "Okay", WHITE)
+                self.add_button(button_pos, WHITE, "Click me to continue", BLACK)
             pygame.display.update()
 
-        # So the mouse click after exit start screen would not affect the game
-        pygame.time.delay(1000)
-
     def display_game_over(self, winner):
-        """Display the game result : winner is found or a draw game
+        """
+        Display the game result : winner is found or a draw game
 
         :param winner: the winner
-        :return:
+        :return: dispaly winner and current scores
         """
-        self.surface_size = self.surface.get_height()
-        font = pygame.font.Font('freesansbold.ttf', int(self.surface_size / 8))
         if winner:
             text = 'Player %s won!' % winner
         else:
-            text = 'Draw!'
-        text = font.render(text, True, BLACK, WHITE)
-        rect = text.get_rect()
-        rect.center = (self.surface_size / 2, self.surface_size / 2)
-        self.surface.blit(text, rect)
+            text = 'Draw Game!'
 
-    def is_hover(self, pos):
-        """
-        Check if mouse hover a button
-        :param pos: position of a button
-        :return: true or false
-        """
-        cur = pygame.mouse.get_pos()
-        if pos[0] + pos[2] > cur[0] > pos[0] and pos[1] + pos[3] > cur[1] > pos[1]:
-            return True
-        else:
-            False
+        # Display result
+        self.surface.fill(DARK_GRAY)
+        self.add_text_to_screen(text, BLACK, 60, 0, DARK_GRAY)
+        # Restart or quit
+        x = self.surface_size
+        restart_button = (x / 2 - x * 0.40, x - x*0.2, 150, 100)
+        quit_button = (x / 2 + x * 0.05, x - x*0.2, 150, 100)
+        p_one = "Player 1: %s" % str(self.result[0])
+        p_two = "Player 2: %s" % str(self.result[1])
+        self.add_text_to_screen(p_one, LIGHT_GREEN, "small", -int(x/2.2), DARK_GRAY, -int(x*0.25))
+        self.add_text_to_screen(p_two, LIGHT_GREEN, "small", -int(x/2.2), DARK_GRAY, int(x*0.25))
+        end = True
+        while end:
+            self.add_button(restart_button, DARK_GRAY, "Restart", LIGHT_GREEN)
+            self.add_button(quit_button, DARK_GRAY, "Quit", LIGHT_GREEN)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            # If user click restart button, break the loop
+            if self.is_hover(restart_button):
+                click = pygame.mouse.get_pressed()
+                self.add_button(restart_button, DARK_GRAY, "Restart", WHITE)
+                if click[0] == 1:
+                    break
+            # If user enter quit button, quit the program
+            if self.is_hover(quit_button):
+                click = pygame.mouse.get_pressed()
+                self.add_button(quit_button, DARK_GRAY, "Quit", WHITE)
+                if click[0] == 1:
+                    pygame.quit()
+                    quit()
 
-    def add_text_to_screen(self, message, color, size="small", offset=0):
+            pygame.display.update()
+
+        # Restart the game
+        self.reset()
+
+    def add_text_to_screen(self, message, color, size="small", yoffset=0, rect_color=(255, 255, 255), xoffset=0):
         """
         Display a message at the middle of the screen
+
         :param message: the message to the screen
         :param color:   color of the text
         :param size:    size of the size
-        :param offset: offset to the middle vertical position [default = 0]
+        :param xoffset: offset to the middle horizontal position [default = 0]
+        :param yoffset: offset to the middle vertical position [default = 0]
+        :param rect_color: background color [default is white[
         :return:
         """
-        text, rect = self.text_objects(message, color, size)
-        rect.center = (self.surface_size / 2, self.surface_size / 2 + offset)
+        text, rect = self.text_objects(message, color, size, rect_color)
+        rect.center = (self.surface_size / 2 + xoffset, self.surface_size / 2 + yoffset)
         self.surface.blit(text, rect)
 
     def add_button(self, size, color, text, text_color):
@@ -306,15 +332,26 @@ class Board(object):
         :param size: array_like shape of the button.
         :param color: color for the button
         :param text: message of the text
+        :param text_color: color of the text
         :return: a button the screen
         """
         text_surf, text_rect = self.text_objects(text, text_color, "small", color)
-        text_rect.center = ((size[0] + size[2]/2), (size[1]+size[3]/2))
+        text_rect.center = ((size[0] + size[2] / 2), (size[1] + size[3] / 2))
         self.surface.blit(text_surf, text_rect)
 
-    def text_objects(self, text, color, size="small", rect_color = (255,255,255)):
+    def add_sound(self, filepath):
+        """
+        Add sound to the game
+        :param filepath: path to the audio file
+        :return:
+        """
+        new_sound = pygame.mixer.Sound(filepath)
+        new_sound.play()
+
+    def text_objects(self, text, color, size="small", rect_color=(255, 255, 255)):
         """
         Create a dynamic text object
+
         :param text: message
         :param color: RGB color
         :param size: size "small", "medium", "large" [default = small]
@@ -323,15 +360,40 @@ class Board(object):
         :return: text, text_surface
 
         """
-        small_font = pygame.font.SysFont(None, int(self.surface_size/17))
-        medium_font = pygame.font.SysFont(None, int(self.surface_size/12))
-        large_font = pygame.font.SysFont(None, int(self.surface_size/8))
         text_surf = None
+        small_font = pygame.font.SysFont(None, int(self.surface_size / 15))
+        medium_font = pygame.font.SysFont(None, int(self.surface_size / 13))
+        large_font = pygame.font.SysFont(None, int(self.surface_size / 10))
         if size == "small":
             text_surf = small_font.render(text, True, color, rect_color)
-        if size == "medium":
+        elif size == "medium":
             text_surf = medium_font.render(text, True, color, rect_color)
-        if size == "large":
+        elif size == "large":
             text_surf = large_font.render(text, True, color, rect_color)
+        else:
+            custom_font = pygame.font.SysFont(None, int(size))
+            text_surf = custom_font.render(text, True, color, rect_color)
+
         return text_surf, text_surf.get_rect()
 
+    def reset(self):
+        """
+        Reset for a new game
+
+        :return:
+        """
+        self.game_over = False
+        self.setup()
+
+    def is_hover(self, pos):
+        """
+        Check if mouse hover a button
+
+        :param pos: position of a button
+        :return: true or false
+        """
+        cur = pygame.mouse.get_pos()
+        if pos[0] + pos[2] > cur[0] > pos[0] and pos[1] + pos[3] > cur[1] > pos[1]:
+            return True
+        else:
+            False

@@ -137,11 +137,11 @@
 <span class="n">BLUE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
 <span class="n">BLACK</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">GREEN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
 <span class="n">BLACK</span> <span class="o">=</span> <span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">)</span>                <span class="c1"># X mark</span>
 <span class="n">DARK_GRAY</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">189</span><span class="p">,</span> <span class="mi">172</span><span class="p">)</span>          <span class="c1"># Background</span>
 <span class="n">LIGHT_YELLOW</span> <span class="o">=</span> <span class="p">(</span><span class="mi">242</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">211</span><span class="p">)</span>      <span class="c1"># O Mark</span>
 <span class="n">LIGHT_GREEN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">146</span><span class="p">)</span>        <span class="c1"># GridLine</span>
+
 
 <div class="viewcode-block" id="Box"><a class="viewcode-back" href="../index.html#lib.Box">[docs]</a><span class="k">class</span> <span class="nc">Box</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -152,45 +152,49 @@
 <span class="sd">    :param line_width: width of the X mark</span>
 <span class="sd">    :param rect: pygame rectangle is drawn on this box</span>
 <span class="sd">    :param board: the board this box uses to drawn</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">state</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize a box</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a box</span>
 
 <span class="sd">        :param x: x-axis value</span>
 <span class="sd">        :param y: y-axis value</span>
 <span class="sd">        :param size: size of this box</span>
 <span class="sd">        :param board: the board it will use to draw</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">40</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">40</span> <span class="k">else</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">board</span> <span class="o">=</span> <span class="n">board</span>
     
 <div class="viewcode-block" id="Box.mark_x"><a class="viewcode-back" href="../index.html#lib.Box.mark_x">[docs]</a>    <span class="k">def</span> <span class="nf">mark_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Mark X on the screen when player clicks on the screen</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mark X on the screen when player clicks on the screen</span>
+
 <span class="sd">        :return: draw X mark on the box that player clicks</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span>
-                         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span><span class="p">)</span>
-        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span>
-                         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span><span class="p">)</span></div>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">+</span> <span class="n">r</span><span class="p">),</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">+</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="n">s</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="Box.mark_o"><a class="viewcode-back" href="../index.html#lib.Box.mark_o">[docs]</a>    <span class="k">def</span> <span class="nf">mark_o</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mark O on the screen when player clicks on the screen</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mark O on the screen when player clicks on the screen</span>
+
 <span class="sd">        :return: draw an O mark on the box that player clicks</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">LIGHT_YELLOW</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span><span class="p">)),</span>
-                           <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_width</span><span class="p">))</span></div></div>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">LIGHT_YELLOW</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centerx</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">centery</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">))</span></div></div>
 
 
 <div class="viewcode-block" id="Board"><a class="viewcode-back" href="../index.html#lib.Board">[docs]</a><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;TicTacToe Board</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TicTacToe Board</span>
 
 <span class="sd">    :param grid_size: number of grids in the Board (Default = 3)</span>
 <span class="sd">    :param box_size:  number of boxes in the Board (Default = 200)</span>
@@ -199,11 +203,11 @@
 <span class="sd">    :param surface_size: size of the window</span>
 <span class="sd">    :param surface:   Game window</span>
 <span class="sd">    :param game_over: state if game is over</span>
+<span class="sd">    :param result:    save result of player 1 and player [default = 0,0]. update after every game</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span>
     
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">box_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">=</span> <span class="n">grid_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">box_size</span> <span class="o">=</span> <span class="n">box_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="n">border</span>
@@ -211,24 +215,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_size</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_width</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s1">&#39;Tic Tac Toe - Final Project&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display_start_screen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
         
 <div class="viewcode-block" id="Board.setup"><a class="viewcode-back" href="../index.html#lib.Board.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a window on the screen.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a window on the screen.</span>
 
 <span class="sd">        :return: nothing</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="p">)</span>
-        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s1">&#39;Tic Tac Toe - Final Project&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">display_start_screen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">DARK_GRAY</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">draw_lines</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize_boxes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;Turn: Player </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">/</span><span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">calculate_winners</span><span class="p">()</span></div>
 
-        <span class="c1"># UPDATE LOOp</span>
-    
 <div class="viewcode-block" id="Board.draw_lines"><a class="viewcode-back" href="../index.html#lib.Board.draw_lines">[docs]</a>    <span class="k">def</span> <span class="nf">draw_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw lines on the Board.</span>
@@ -244,14 +247,14 @@
 <div class="viewcode-block" id="Board.initialize_boxes"><a class="viewcode-back" href="../index.html#lib.Board.initialize_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create boxes for the TicTacToe Board</span>
-<span class="sd">        :return:</span>
+
+<span class="sd">        :return: set up all the boxes on the screen window</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">top_left_numbers</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">):</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="p">((</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_size</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">line_width</span><span class="p">))</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="p">((</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_size</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span><span class="p">))</span>
             <span class="n">top_left_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-        
         <span class="n">box_coordinates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">top_left_numbers</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">box_coordinates</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Box</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_size</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span></div>
@@ -262,8 +265,8 @@
 
 <span class="sd">        :param x: x-axis value on the window</span>
 <span class="sd">        :param y: y-axis value on the window</span>
-<span class="sd">        :return: box where player clicks</span>
-<span class="sd">                 None if box is not found</span>
+
+<span class="sd">        :return: box where player clicks. None if box is not found</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">box</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boxes</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">collidepoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -271,27 +274,29 @@
         <span class="k">return</span> <span class="kc">None</span></div>
     
 <div class="viewcode-block" id="Board.process_click"><a class="viewcode-back" href="../index.html#lib.Board.process_click">[docs]</a>    <span class="k">def</span> <span class="nf">process_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Process where player clicks and feedback appropriate actions</span>
-<span class="sd">                . If player clicks in BOX area:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process where player clicks and feedback appropriate actions if player clicks in BOX area:</span>
 
-<span class="sd">        :param x:</span>
-<span class="sd">        :param y:</span>
+<span class="sd">        :param x: x-axis value</span>
+<span class="sd">        :param y: y-axis value</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_box_at_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">box</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">play_turn</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;Turn: Player </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">check_game_over</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Board.play_turn"><a class="viewcode-back" href="../index.html#lib.Board.play_turn">[docs]</a>    <span class="k">def</span> <span class="nf">play_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">box</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Determine which turn:</span>
+<span class="sd">        Determine turn of players and draw line/circle</span>
 <span class="sd">        X = 1</span>
 <span class="sd">        O = 2</span>
 
-<span class="sd">        :param box:</span>
+<span class="sd">        :param box: a box user has selected</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -302,16 +307,16 @@
             <span class="n">box</span><span class="o">.</span><span class="n">mark_o</span><span class="p">()</span>
             <span class="n">box</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span>
+
         <span class="k">return</span></div>
     
 <div class="viewcode-block" id="Board.calculate_winners"><a class="viewcode-back" href="../index.html#lib.Board.calculate_winners">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_winners</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Counting all selected boxes by a player is enough to be a winner</span>
+<span class="sd">        Count all selected boxes by a player is enough to be a winner</span>
 
-<span class="sd">        :return:</span>
+<span class="sd">        :return: nothing</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">winning_combinations</span> <span class="o">=</span> <span class="p">[]</span>
-
         <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">)]</span>
         
         <span class="c1"># Vertical combinations</span>
@@ -328,7 +333,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Determine if the winner is found</span>
 
-<span class="sd">        :return:</span>
+<span class="sd">        :return: winner</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">winner</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">winning_combinations</span><span class="p">:</span>
@@ -337,15 +342,17 @@
                 <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boxes</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">states</span><span class="p">):</span>
                 <span class="n">winner</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">states</span><span class="p">):</span>
                 <span class="n">winner</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">winner</span></div>
     
 <div class="viewcode-block" id="Board.check_game_over"><a class="viewcode-back" href="../index.html#lib.Board.check_game_over">[docs]</a>    <span class="k">def</span> <span class="nf">check_game_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Determine if the game is over</span>
+<span class="sd">        Determine if the game is over.</span>
 
-<span class="sd">        :return:</span>
+<span class="sd">        :return: update self.game_over</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">winner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_for_winner</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">winner</span><span class="p">:</span>
@@ -358,75 +365,94 @@
 <div class="viewcode-block" id="Board.display_start_screen"><a class="viewcode-back" href="../index.html#lib.Board.display_start_screen">[docs]</a>    <span class="k">def</span> <span class="nf">display_start_screen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display an Instruction screen before players starting the game</span>
+
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">intro</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span>
-        <span class="n">button_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">90</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">button_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.16</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
         <span class="k">while</span> <span class="n">intro</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
                 <span class="c1"># print(event)</span>
                 <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
                     <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
                     <span class="n">quit</span><span class="p">()</span>
-
             <span class="c1"># Create a blank white screen</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;Welcome to TicTacToe Game&quot;</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">*</span><span class="mf">0.05</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;CIS F003A - Fall 2016&quot;</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">*</span><span class="mf">0.05</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">button_pos</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="s2">&quot;Okay&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
-
-            <span class="n">cur</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">LIGHT_GREEN</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;Welcome to TicTacToe Game&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">*</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="s2">&quot;CIS F003A - Fall 2016&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">*</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">button_pos</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Click me to continue&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_hover</span><span class="p">(</span><span class="n">button_pos</span><span class="p">):</span>
                 <span class="n">click</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">click</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">break</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">button_pos</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Okay&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
-            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-        <span class="c1"># So the mouse click after exit start screen would not affect the game</span>
-        <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">button_pos</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">,</span> <span class="s2">&quot;Click me to continue&quot;</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">)</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Board.display_game_over"><a class="viewcode-back" href="../index.html#lib.Board.display_game_over">[docs]</a>    <span class="k">def</span> <span class="nf">display_game_over</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">winner</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Display the game result : winner is found or a draw game</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display the game result : winner is found or a draw game</span>
 
 <span class="sd">        :param winner: the winner</span>
-<span class="sd">        :return:</span>
+<span class="sd">        :return: dispaly winner and current scores</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
-        <span class="n">font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;freesansbold.ttf&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">8</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">winner</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Player </span><span class="si">%s</span><span class="s1"> won!&#39;</span> <span class="o">%</span> <span class="n">winner</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Draw!&#39;</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
-        <span class="n">rect</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
-        <span class="n">rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span></div>
+            <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Draw Game!&#39;</span>
 
-<div class="viewcode-block" id="Board.is_hover"><a class="viewcode-back" href="../index.html#lib.Board.is_hover">[docs]</a>    <span class="k">def</span> <span class="nf">is_hover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Check if mouse hover a button</span>
-<span class="sd">        :param pos: position of a button</span>
-<span class="sd">        :return: true or false</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="kc">False</span></div>
+        <span class="c1"># Display result</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">DARK_GRAY</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">BLACK</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">)</span>
+        <span class="c1"># Restart or quit</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span>
+        <span class="n">restart_button</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.40</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">quit_button</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">p_one</span> <span class="o">=</span> <span class="s2">&quot;Player 1: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">p_two</span> <span class="o">=</span> <span class="s2">&quot;Player 2: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="n">p_one</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="n">p_two</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">while</span> <span class="n">end</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">restart_button</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Restart&quot;</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">quit_button</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Quit&quot;</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+                    <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+                    <span class="n">quit</span><span class="p">()</span>
+            <span class="c1"># If user click restart button, break the loop</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_hover</span><span class="p">(</span><span class="n">restart_button</span><span class="p">):</span>
+                <span class="n">click</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">restart_button</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Restart&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">click</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="c1"># If user enter quit button, quit the program</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_hover</span><span class="p">(</span><span class="n">quit_button</span><span class="p">):</span>
+                <span class="n">click</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">quit_button</span><span class="p">,</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="s2">&quot;Quit&quot;</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">click</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+                    <span class="n">quit</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Board.add_text_to_screen"><a class="viewcode-back" href="../index.html#lib.Board.add_text_to_screen">[docs]</a>    <span class="k">def</span> <span class="nf">add_text_to_screen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="c1"># Restart the game</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Board.add_text_to_screen"><a class="viewcode-back" href="../index.html#lib.Board.add_text_to_screen">[docs]</a>    <span class="k">def</span> <span class="nf">add_text_to_screen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">yoffset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rect_color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">xoffset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display a message at the middle of the screen</span>
+
 <span class="sd">        :param message: the message to the screen</span>
 <span class="sd">        :param color:   color of the text</span>
 <span class="sd">        :param size:    size of the size</span>
-<span class="sd">        :param offset: offset to the middle vertical position [default = 0]</span>
+<span class="sd">        :param xoffset: offset to the middle horizontal position [default = 0]</span>
+<span class="sd">        :param yoffset: offset to the middle vertical position [default = 0]</span>
+<span class="sd">        :param rect_color: background color [default is white[</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">text</span><span class="p">,</span> <span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_objects</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-        <span class="n">rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+        <span class="n">text</span><span class="p">,</span> <span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_objects</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">rect_color</span><span class="p">)</span>
+        <span class="n">rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">xoffset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">yoffset</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Board.add_button"><a class="viewcode-back" href="../index.html#lib.Board.add_button">[docs]</a>    <span class="k">def</span> <span class="nf">add_button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">text_color</span><span class="p">):</span>
@@ -436,15 +462,26 @@
 <span class="sd">        :param size: array_like shape of the button.</span>
 <span class="sd">        :param color: color for the button</span>
 <span class="sd">        :param text: message of the text</span>
+<span class="sd">        :param text_color: color of the text</span>
 <span class="sd">        :return: a button the screen</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">text_surf</span><span class="p">,</span> <span class="n">text_rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_objects</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text_color</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
-        <span class="n">text_rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">((</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">size</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">text_rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">((</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">text_surf</span><span class="p">,</span> <span class="n">text_rect</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Board.text_objects"><a class="viewcode-back" href="../index.html#lib.Board.text_objects">[docs]</a>    <span class="k">def</span> <span class="nf">text_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">rect_color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)):</span>
+<div class="viewcode-block" id="Board.add_sound"><a class="viewcode-back" href="../index.html#lib.Board.add_sound">[docs]</a>    <span class="k">def</span> <span class="nf">add_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add sound to the game</span>
+<span class="sd">        :param filepath: path to the audio file</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_sound</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">Sound</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="n">new_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Board.text_objects"><a class="viewcode-back" href="../index.html#lib.Board.text_objects">[docs]</a>    <span class="k">def</span> <span class="nf">text_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">rect_color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a dynamic text object</span>
+
 <span class="sd">        :param text: message</span>
 <span class="sd">        :param color: RGB color</span>
 <span class="sd">        :param size: size &quot;small&quot;, &quot;medium&quot;, &quot;large&quot; [default = small]</span>
@@ -453,18 +490,43 @@
 <span class="sd">        :return: text, text_surface</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">small_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">/</span><span class="mi">17</span><span class="p">))</span>
-        <span class="n">medium_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">/</span><span class="mi">12</span><span class="p">))</span>
-        <span class="n">large_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span><span class="o">/</span><span class="mi">8</span><span class="p">))</span>
         <span class="n">text_surf</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">small_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">15</span><span class="p">))</span>
+        <span class="n">medium_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">13</span><span class="p">))</span>
+        <span class="n">large_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_size</span> <span class="o">/</span> <span class="mi">10</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="s2">&quot;small&quot;</span><span class="p">:</span>
             <span class="n">text_surf</span> <span class="o">=</span> <span class="n">small_font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">rect_color</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="s2">&quot;medium&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">size</span> <span class="o">==</span> <span class="s2">&quot;medium&quot;</span><span class="p">:</span>
             <span class="n">text_surf</span> <span class="o">=</span> <span class="n">medium_font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">rect_color</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="s2">&quot;large&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">size</span> <span class="o">==</span> <span class="s2">&quot;large&quot;</span><span class="p">:</span>
             <span class="n">text_surf</span> <span class="o">=</span> <span class="n">large_font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">rect_color</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">text_surf</span><span class="p">,</span> <span class="n">text_surf</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span></div></div>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">custom_font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+            <span class="n">text_surf</span> <span class="o">=</span> <span class="n">custom_font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">rect_color</span><span class="p">)</span>
 
+        <span class="k">return</span> <span class="n">text_surf</span><span class="p">,</span> <span class="n">text_surf</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Board.reset"><a class="viewcode-back" href="../index.html#lib.Board.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reset for a new game</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Board.is_hover"><a class="viewcode-back" href="../index.html#lib.Board.is_hover">[docs]</a>    <span class="k">def</span> <span class="nf">is_hover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if mouse hover a button</span>
+
+<span class="sd">        :param pos: position of a button</span>
+<span class="sd">        :return: true or false</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="kc">False</span></div></div>
 </pre></div>
 
            </div>

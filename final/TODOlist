@@ -22,22 +22,10 @@ Currently, as  it stands it works but is barely object oriented, also customers 
 requesting a few more features to the tic-tac toe game to make sure our users are satisfied.
 
 
-Redesign the game using object-oriented principles and patterns to be more extensible:
-TopTotal Python Patterns (Links to an external site.),
-Design Patterns in Python (Links to an external site.)
 
 Sounds: Sounds should be made by the game after each play by each player and also when the game is completed.
         The game should also play a different sound to signify the end of the game.
 
-Gameplay: Have the screen indicate, whose turn it is to play.  At the end of the game,
-          give the option to play another game or end the game.
-
-Change the game User Interface(UI) to be a little more colourful. As currently the game is in black and white.
-
-Properly document the program and its functionality using Sphinx:
-Sphinx Official documentation (Links to an external site.),
-help with sphinx documentation (Links to an external site.),
-another site to help you with documenting your code (Links to an external site.).
 
 Every method, class should be documented with what the function/class does as well.
 
