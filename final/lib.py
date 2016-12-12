@@ -12,6 +12,13 @@ DARK_GRAY = (20, 189, 172)          # Background
 LIGHT_YELLOW = (242, 235, 211)      # O Mark
 LIGHT_GREEN = (13, 161, 146)        # GridLine
 
+# SOUND Global variables
+M_START = "./sound/start.wav"
+M_P1 = "./sound/player1.wav"
+M_P2 = "./sound/player2.wav"
+M_WINNER = "./sound/winner.wav"
+M_DRAW = "./sound/draw.wav"
+
 
 class Box(object):
     """
@@ -87,6 +94,7 @@ class Board(object):
         self.game_over = False
         self.result = [0, 0]
         pygame.display.set_caption('Tic Tac Toe - Final Project')
+        self.add_sound(M_START)
         self.display_start_screen()
         self.setup()
         
@@ -170,10 +178,12 @@ class Board(object):
         if box.state != 0:
             return
         if self.turn == 1:
+            self.add_sound(M_P1)
             box.mark_x()
             box.state = 1
             self.turn = 2
         elif self.turn == 2:
+            self.add_sound(M_P2)
             box.mark_o()
             box.state = 2
             self.turn = 1
@@ -267,8 +277,10 @@ class Board(object):
         :return: dispaly winner and current scores
         """
         if winner:
+            self.add_sound(M_WINNER)
             text = 'Player %s won!' % winner
         else:
+            self.add_sound(M_DRAW)
             text = 'Draw Game!'
 
         # Display result
@@ -280,6 +292,7 @@ class Board(object):
         quit_button = (x / 2 + x * 0.05, x - x*0.2, 150, 100)
         p_one = "Player 1: %s" % str(self.result[0])
         p_two = "Player 2: %s" % str(self.result[1])
+
         self.add_text_to_screen(p_one, LIGHT_GREEN, "small", -int(x/2.2), DARK_GRAY, -int(x*0.25))
         self.add_text_to_screen(p_two, LIGHT_GREEN, "small", -int(x/2.2), DARK_GRAY, int(x*0.25))
         end = True
@@ -397,3 +410,13 @@ class Board(object):
             return True
         else:
             False
+
+    def add_sound(self, path):
+        """
+        Add sound to the game
+        :param self:
+        :param path: path to audio file
+        :return: play sound
+        """
+        pygame.mixer.music.load(path)
+        pygame.mixer.music.play()

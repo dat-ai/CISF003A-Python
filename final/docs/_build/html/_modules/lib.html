@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="TicTacToe Game - CIS F003A 2016 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Module code" href="index.html"/> 
 
@@ -142,6 +139,13 @@
 <span class="n">LIGHT_YELLOW</span> <span class="o">=</span> <span class="p">(</span><span class="mi">242</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">211</span><span class="p">)</span>      <span class="c1"># O Mark</span>
 <span class="n">LIGHT_GREEN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">146</span><span class="p">)</span>        <span class="c1"># GridLine</span>
 
+<span class="c1"># SOUND Global variables</span>
+<span class="n">M_START</span> <span class="o">=</span> <span class="s2">&quot;./sound/start.wav&quot;</span>
+<span class="n">M_P1</span> <span class="o">=</span> <span class="s2">&quot;./sound/player1.wav&quot;</span>
+<span class="n">M_P2</span> <span class="o">=</span> <span class="s2">&quot;./sound/player2.wav&quot;</span>
+<span class="n">M_WINNER</span> <span class="o">=</span> <span class="s2">&quot;./sound/winner.wav&quot;</span>
+<span class="n">M_DRAW</span> <span class="o">=</span> <span class="s2">&quot;./sound/draw.wav&quot;</span>
+
 
 <div class="viewcode-block" id="Box"><a class="viewcode-back" href="../index.html#lib.Box">[docs]</a><span class="k">class</span> <span class="nc">Box</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -217,6 +221,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">game_over</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s1">&#39;Tic Tac Toe - Final Project&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_sound</span><span class="p">(</span><span class="n">M_START</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">display_start_screen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
         
@@ -300,10 +305,12 @@
         <span class="k">if</span> <span class="n">box</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_sound</span><span class="p">(</span><span class="n">M_P1</span><span class="p">)</span>
             <span class="n">box</span><span class="o">.</span><span class="n">mark_x</span><span class="p">()</span>
             <span class="n">box</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_sound</span><span class="p">(</span><span class="n">M_P2</span><span class="p">)</span>
             <span class="n">box</span><span class="o">.</span><span class="n">mark_o</span><span class="p">()</span>
             <span class="n">box</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span>
@@ -397,8 +404,10 @@
 <span class="sd">        :return: dispaly winner and current scores</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">winner</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_sound</span><span class="p">(</span><span class="n">M_WINNER</span><span class="p">)</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Player </span><span class="si">%s</span><span class="s1"> won!&#39;</span> <span class="o">%</span> <span class="n">winner</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_sound</span><span class="p">(</span><span class="n">M_DRAW</span><span class="p">)</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Draw Game!&#39;</span>
 
         <span class="c1"># Display result</span>
@@ -410,6 +419,7 @@
         <span class="n">quit_button</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
         <span class="n">p_one</span> <span class="o">=</span> <span class="s2">&quot;Player 1: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">p_two</span> <span class="o">=</span> <span class="s2">&quot;Player 2: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="n">p_one</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_text_to_screen</span><span class="p">(</span><span class="n">p_two</span><span class="p">,</span> <span class="n">LIGHT_GREEN</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">2.2</span><span class="p">),</span> <span class="n">DARK_GRAY</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
         <span class="n">end</span> <span class="o">=</span> <span class="kc">True</span>
@@ -469,14 +479,14 @@
         <span class="n">text_rect</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">((</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">text_surf</span><span class="p">,</span> <span class="n">text_rect</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Board.add_sound"><a class="viewcode-back" href="../index.html#lib.Board.add_sound">[docs]</a>    <span class="k">def</span> <span class="nf">add_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add sound to the game</span>
 <span class="sd">        :param filepath: path to the audio file</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_sound</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">Sound</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-        <span class="n">new_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span></div>
+        <span class="n">new_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Board.text_objects"><a class="viewcode-back" href="../index.html#lib.Board.text_objects">[docs]</a>    <span class="k">def</span> <span class="nf">text_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">rect_color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -526,7 +536,17 @@
         <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="kc">False</span></div></div>
+            <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Board.add_sound"><a class="viewcode-back" href="../index.html#lib.Board.add_sound">[docs]</a>    <span class="k">def</span> <span class="nf">add_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add sound to the game</span>
+<span class="sd">        :param self:</span>
+<span class="sd">        :param path: path to audio file</span>
+<span class="sd">        :return: play sound</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">music</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">music</span><span class="o">.</span><span class="n">play</span><span class="p">()</span></div></div>
 </pre></div>
 
            </div>
