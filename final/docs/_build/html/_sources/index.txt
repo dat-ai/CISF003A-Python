@@ -43,26 +43,44 @@ Updates
 TicTacToe Library
 =================
     .. automodule::lib
+
     .. autosummary::
+        lib.Board
+        lib.Box
+        lib.UtilPyGame
 
 Board Class
 -----------
-       .. py:currentmodule:: lib
+    .. py:currentmodule:: lib
 
     .. autoclass:: Board
        :members:
        :undoc-members:
-       :show-inheritance:
 
 Box Class
 ---------
-       .. py:currentmodule:: lib
+    .. py:currentmodule:: lib
 
     .. autoclass:: Box
        :members:
        :undoc-members:
-       :show-inheritance:
 
+UtilPygame Class
+----------------
+    .. py:currentmodule:: lib
+
+    .. autoclass:: UtilPyGame
+       :members:
+       :undoc-members:
+
+
+========
+UnitTest
+========
+
+    .. automodule:: tictactoeTest
+        :members:
+        :undoc-members:
 
 ==================
 Indices and tables

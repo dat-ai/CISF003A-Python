@@ -90,8 +90,10 @@
 <li><a class="reference internal" href="#tictactoe-library">TicTacToe Library</a><ul>
 <li><a class="reference internal" href="#board-class">Board Class</a></li>
 <li><a class="reference internal" href="#box-class">Box Class</a></li>
+<li><a class="reference internal" href="#utilpygame-class">UtilPygame Class</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#unittest">UnitTest</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
@@ -189,6 +191,15 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#lib.Board" title="lib.Board"><code class="xref py py-obj docutils literal"><span class="pre">lib.Board</span></code></a>([grid_size,&nbsp;box_size,&nbsp;border,&nbsp;...])</td>
+<td>TicTacToe Board</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#lib.Box" title="lib.Box"><code class="xref py py-obj docutils literal"><span class="pre">lib.Box</span></code></a>(x,&nbsp;y,&nbsp;size,&nbsp;board)</td>
+<td>Box where the x&#8217;s and o&#8217;s are drawn</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#lib.UtilPyGame" title="lib.UtilPyGame"><code class="xref py py-obj docutils literal"><span class="pre">lib.UtilPyGame</span></code></a>(board,&nbsp;size)</td>
+<td>Utility for PyGame.</td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -198,8 +209,7 @@
 <div><dl class="class">
 <dt id="lib.Board">
 <em class="property">class </em><code class="descclassname">lib.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>grid_size=3</em>, <em>box_size=200</em>, <em>border=20</em>, <em>line_width=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>TicTacToe Board</p>
+<dd><p>TicTacToe Board</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -219,88 +229,17 @@
 </tbody>
 </table>
 <dl class="method">
-<dt id="lib.Board.add_button">
-<code class="descname">add_button</code><span class="sig-paren">(</span><em>size</em>, <em>color</em>, <em>text</em>, <em>text_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.add_button"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.add_button" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a button to the screen</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size</strong> &#8211; array_like shape of the button.</li>
-<li><strong>color</strong> &#8211; color for the button</li>
-<li><strong>text</strong> &#8211; message of the text</li>
-<li><strong>text_color</strong> &#8211; color of the text</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a button the screen</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="lib.Board.add_sound">
-<code class="descname">add_sound</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.add_sound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.add_sound" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add sound to the game
-:param self:
-:param path: path to audio file
-:return: play sound</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="lib.Board.add_text_to_screen">
-<code class="descname">add_text_to_screen</code><span class="sig-paren">(</span><em>message</em>, <em>color</em>, <em>size='small'</em>, <em>yoffset=0</em>, <em>rect_color=(255</em>, <em>255</em>, <em>255)</em>, <em>xoffset=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.add_text_to_screen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.add_text_to_screen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display a message at the middle of the screen</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>message</strong> &#8211; the message to the screen</li>
-<li><strong>color</strong> &#8211; color of the text</li>
-<li><strong>size</strong> &#8211; size of the size</li>
-<li><strong>xoffset</strong> &#8211; offset to the middle horizontal position [default = 0]</li>
-<li><strong>yoffset</strong> &#8211; offset to the middle vertical position [default = 0]</li>
-<li><strong>rect_color</strong> &#8211; background color [default is white[</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="lib.Board.calculate_winners">
 <code class="descname">calculate_winners</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.calculate_winners"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.calculate_winners" title="Permalink to this definition">¶</a></dt>
-<dd><p>Count all selected boxes by a player is enough to be a winner</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">nothing</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Count all selected boxes by a player is enough to be a winner
+:return: nothing</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="lib.Board.check_for_winner">
 <code class="descname">check_for_winner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.check_for_winner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.check_for_winner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determine if the winner is found</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">winner</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Determine if the winner is found
+:return: winner</p>
 </dd></dl>
 
 <dl class="method">
@@ -320,45 +259,23 @@
 <dl class="method">
 <dt id="lib.Board.display_game_over">
 <code class="descname">display_game_over</code><span class="sig-paren">(</span><em>winner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.display_game_over"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.display_game_over" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display the game result : winner is found or a draw game</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>winner</strong> &#8211; the winner</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dispaly winner and current scores</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Display the game result : winner is found or a draw game
+:param winner: the winner
+:return: dispaly winner and current scores</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="lib.Board.display_start_screen">
 <code class="descname">display_start_screen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.display_start_screen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.display_start_screen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display an Instruction screen before players starting the game</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dd><p>Display an Welcome screen before starting the game
+:return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="lib.Board.draw_lines">
 <code class="descname">draw_lines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.draw_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.draw_lines" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw lines on the Board.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">display grid-lines on the board</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Draw lines on the Board.
+:return: display grid-lines on the board</p>
 </dd></dl>
 
 <dl class="method">
@@ -399,17 +316,9 @@
 <dl class="method">
 <dt id="lib.Board.is_hover">
 <code class="descname">is_hover</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.is_hover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.is_hover" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if mouse hover a button</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pos</strong> &#8211; position of a button</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">true or false</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Check if mouse hover a button
+:param pos: position of a button
+:return: true or false</p>
 </dd></dl>
 
 <dl class="method">
@@ -417,17 +326,9 @@
 <code class="descname">play_turn</code><span class="sig-paren">(</span><em>box</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.play_turn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.play_turn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine turn of players and draw line/circle
 X = 1
-O = 2</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>box</strong> &#8211; a box user has selected</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+O = 2
+:param box: a box user has selected
+:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -455,51 +356,13 @@ O = 2</p>
 <dt id="lib.Board.reset">
 <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset for a new game</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="lib.Board.setup">
 <code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a window on the screen.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">nothing</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="lib.Board.text_objects">
-<code class="descname">text_objects</code><span class="sig-paren">(</span><em>text</em>, <em>color</em>, <em>size='small'</em>, <em>rect_color=(255</em>, <em>255</em>, <em>255)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Board.text_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Board.text_objects" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a dynamic text object</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>text</strong> &#8211; message</li>
-<li><strong>color</strong> &#8211; RGB color</li>
-<li><strong>size</strong> &#8211; size &#8220;small&#8221;, &#8220;medium&#8221;, &#8220;large&#8221; [default = small]</li>
-<li><strong>rect_color</strong> &#8211; color of the rectangle boundary</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">text, text_surface</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Create a window on the screen.
+:return: nothing</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -517,8 +380,7 @@ O = 2</p>
 <div><dl class="class">
 <dt id="lib.Box">
 <em class="property">class </em><code class="descclassname">lib.</code><code class="descname">Box</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>size</em>, <em>board</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#Box"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.Box" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>Box where the x&#8217;s and o&#8217;s are drawn</p>
+<dd><p>Box where the x&#8217;s and o&#8217;s are drawn</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -586,6 +448,156 @@ O = 2</p>
 
 </div></blockquote>
 </div>
+<div class="section" id="utilpygame-class">
+<h2>UtilPygame Class<a class="headerlink" href="#utilpygame-class" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="class">
+<dt id="lib.UtilPyGame">
+<em class="property">class </em><code class="descclassname">lib.</code><code class="descname">UtilPyGame</code><span class="sig-paren">(</span><em>board</em>, <em>size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#UtilPyGame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.UtilPyGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility for PyGame. Add_button, add_text_to_screen</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>size</strong> &#8211; size of current window</li>
+<li><strong>board</strong> &#8211; TicTacToe board</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="lib.UtilPyGame.add_button">
+<code class="descname">add_button</code><span class="sig-paren">(</span><em>size</em>, <em>color</em>, <em>text</em>, <em>text_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#UtilPyGame.add_button"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.UtilPyGame.add_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a button to the screen</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> &#8211; array_like shape of the button.</li>
+<li><strong>color</strong> &#8211; color for the button</li>
+<li><strong>text</strong> &#8211; message of the text</li>
+<li><strong>text_color</strong> &#8211; color of the text</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a button the screen</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.UtilPyGame.add_sound">
+<code class="descname">add_sound</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#UtilPyGame.add_sound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.UtilPyGame.add_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add sound to the game
+:param self:
+:param path: path to audio file
+:return: play sound</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.UtilPyGame.add_text_to_screen">
+<code class="descname">add_text_to_screen</code><span class="sig-paren">(</span><em>message</em>, <em>color</em>, <em>size='small'</em>, <em>y_offset=0</em>, <em>rect_color=(255</em>, <em>255</em>, <em>255)</em>, <em>x_offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#UtilPyGame.add_text_to_screen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.UtilPyGame.add_text_to_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a message at the middle of the screen</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>message</strong> &#8211; the message to the screen</li>
+<li><strong>color</strong> &#8211; color of the text</li>
+<li><strong>size</strong> &#8211; size of the size</li>
+<li><strong>x_offset</strong> &#8211; offset to the middle horizontal position [default = 0]</li>
+<li><strong>y_offset</strong> &#8211; offset to the middle vertical position [default = 0]</li>
+<li><strong>rect_color</strong> &#8211; background color [default is white[</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.UtilPyGame.text_objects">
+<code class="descname">text_objects</code><span class="sig-paren">(</span><em>text</em>, <em>color</em>, <em>size='small'</em>, <em>rect_color=(255</em>, <em>255</em>, <em>255)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib.html#UtilPyGame.text_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.UtilPyGame.text_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dynamic text object
+:param text: message
+:param color: RGB color
+:param size: size &#8220;small&#8221;, &#8220;medium&#8221;, &#8220;large&#8221; [default = small]
+:param rect_color: color of the rectangle boundary
+:return: text, text_surface</p>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="unittest">
+<h1>UnitTest<a class="headerlink" href="#unittest" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><span class="target" id="module-tictactoeTest"></span><dl class="class">
+<dt id="tictactoeTest.TicTacToeTestCase">
+<em class="property">class </em><code class="descclassname">tictactoeTest.</code><code class="descname">TicTacToeTestCase</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unittest for TicTacToe Game</p>
+<p>Initialization</p>
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create boards with different parameters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tear Down unittest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.test_board_init">
+<code class="descname">test_board_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.test_board_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.test_board_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if board can initialize with different sizes
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.test_box_init">
+<code class="descname">test_box_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.test_box_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.test_box_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if boxes are initialized correctly
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.test_calculate_winner">
+<code class="descname">test_calculate_winner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.test_calculate_winner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.test_calculate_winner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if winner is calculated properly
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.test_check_winner">
+<code class="descname">test_check_winner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.test_check_winner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.test_check_winner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if winner is checked properly
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tictactoeTest.TicTacToeTestCase.test_util_init">
+<code class="descname">test_util_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tictactoeTest.html#TicTacToeTestCase.test_util_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tictactoeTest.TicTacToeTestCase.test_util_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if pygame utility is initialized
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
